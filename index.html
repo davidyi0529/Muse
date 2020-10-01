@@ -21,14 +21,23 @@
     <div id="main">
         <form id="searchBar">
             <input type="text" id="keyWord" placeholder="enter an artist..">
-            <input type="submit" value="Submit">
+            <input type="submit" id="button" value="Submit">
         </form>
     </div>
+    <audio src="https://genius.com/songs/3315890/apple_music_player"></audio>
     <!-- couldn't get youtube to display -->
     <!-- <iframe id="yo"></iframe> --> 
 
     <!-- JavaScript/jQuery -->
     <script>
+        $("#button").on("click", function(event){
+            event.preventDefault();
+            //alert("working");
+            var input = $("#keyWord").val();
+            input = input.toString().toLowerCase();
+            alert(input);
+        });
+        
         //Genius API
         var APIKey = "14S5okXH4GKYe-PKaBH0HlfjVuSDyaK9ZUwz3ep3rqUAc37eQtPWr9j6NLxyCBp8";
         var keyWord = "dua lipa";
