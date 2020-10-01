@@ -7,13 +7,27 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
-    <h2>testing</h2>
-    <div id="main"></div>
-    <iframe id="yo"></iframe>
+    <style>
+        h2{
+            text-align: center;
+        }
+        #searchBar{
+            text-align: center;
+        }
+    </style>
+    <h2>Muse</h2>
+    <div id="main">
+        <form id="searchBar">
+            <input type="text" id="keyWord" placeholder="enter an artist..">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <!-- couldn't get youtube to display -->
+    <!-- <iframe id="yo"></iframe> --> 
     <script>
         //Genius API
         var APIKey = "14S5okXH4GKYe-PKaBH0HlfjVuSDyaK9ZUwz3ep3rqUAc37eQtPWr9j6NLxyCBp8";
-        var keyWord = "drake";
+        var keyWord = "dua lipa";
         var queryURL = "https://api.genius.com/search?q="+keyWord+"&access_token="+APIKey;
 
         $.ajax({
@@ -21,14 +35,28 @@
             method: "GET"
         }).then(function(response) {
             console.log(response);
+            //number of hits
             var hitsLength = response.response.hits.length;
             console.log(hitsLength);
+            //loops through hits and returns title, link to lyrics, and song image
             for(var i = 0; i < hitsLength; i++){
+                //title
                 var hitsTitle = $("<p>");
                 hitsTitle.text(response.response.hits[i].result.full_title);
                 $("#main").append(hitsTitle);
+                //lyrics url
+                var hitsLyric = $("<a>");
+                hitsLyric.attr("href", response.response.hits[i].result.url);
+                hitsLyric.attr("target", "_blank");
+                hitsLyric.text(response.response.hits[i].result.url);
+                $("#main").append(hitsLyric);
+                //image
+                var hitsIMG = $("<img>");
+                hitsIMG.attr("src", response.response.hits[i].result.header_image_url);
+                //hitsIMG.text(response.response.hits[i].result.header_image_url); //unneccessary link
+                $("#main").append(hitsIMG);
             }
-            console.log(response.response.hits[i].result.path);
+            //console.log(response.response.hits[i].result.path);
         });
 //===============================================================================
         //Rapid Genius API
@@ -47,8 +75,8 @@
 	        console.log(response);
             console.log(response.response.song.media[0].url);
             var youtubeURL = response.response.song.media[0].url;
-            youtubeURL.replace("watch?v=", 'embed/');
-            $("#yo").attr("src", youtubeURL);
+            //youtubeURL.replace("watch?v=", 'embed/');  //vid doesnt display
+            //$("#yo").attr("src", youtubeURL);
         });
        
     </script>
