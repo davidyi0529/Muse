@@ -1,25 +1,31 @@
-//Genius API
-var APIKey = "14S5okXH4GKYe-PKaBH0HlfjVuSDyaK9ZUwz3ep3rqUAc37eQtPWr9j6NLxyCBp8";
-var keyWord = "drake";
-var queryURL = "https://api.genius.com/search?q="+keyWord+"&access_token="+APIKey;
+$(document).ready(function(){
+    $("#searchBtn").on("click", function(e){
+        e.preventDefault();
+        console.log("click")
+        //Genius API
+        var APIKey = "14S5okXH4GKYe-PKaBH0HlfjVuSDyaK9ZUwz3ep3rqUAc37eQtPWr9j6NLxyCBp8";
+        var keyWord = $("#searchInput").val();
+        var queryURL = "https://api.genius.com/search?q="+keyWord+"&access_token="+APIKey;
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function(response) {
-    console.log(response);
-    var hitsLength = response.response.hits.length;
-    console.log(hitsLength);
-    for(var i = 0; i < hitsLength; i++){
-        var hitsTitle = $("<a>");
-        var listItem = $("<li>");
-        hitsTitle.attr("href", "#");
-        hitsTitle.text(response.response.hits[i].result.full_title);
-        listItem.append(hitsTitle)
-        $("#list").append(listItem);
-    }
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            var hitsLength = response.response.hits.length;
+            console.log(hitsLength);
+            for(var i = 0; i < hitsLength; i++){
+                var hitsTitle = $("<a>");
+                var listItem = $("<li>");
+                hitsTitle.attr("href", "#");
+                hitsTitle.text(response.response.hits[i].result.full_title);
+                listItem.append(hitsTitle)
+                $("#list").append(listItem);
+         }
     
-});
+        });
+    })
+})
 //===============================================================================
 //Rapid Genius API
 var settings = {
