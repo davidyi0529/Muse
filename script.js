@@ -42,7 +42,6 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
     console.log(response.response.song.media[0].url);
-    var youtubeURL = response.response.song.media[0].url;
-    youtubeURL.replace("watch?v=", 'embed/');
-    $("#yo").attr("src", youtubeURL);
+    
+    $("#music")
 });
