@@ -1,7 +1,3 @@
-// $(document).ready(function(){
-//   $('.slider').slider();
-// });
-
 $(document).ready(function(){
   $("#searchBtn").on("click", function(e){
       e.preventDefault();
