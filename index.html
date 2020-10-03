@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/css/uikit.min.css" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script src="https://kit.fontawesome.com/b386b5e099.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+
     <!--  Materialize CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -18,7 +22,7 @@
     <body class="background uk-cover-container uk-height-viewport uk-overflow-hidden uk-light" data-uk-height-viewport></body>
         
         <div class="uk-position-bottom-center uk-position-small uk-visible@m uk-position-z-index">
-			<span class="uk-text-small uk-text-muted">Copyright © All rights reserved.</span>
+            <span class="uk-text-small uk-text-muted">Copyright © All rights reserved.</span>
         </div>
          
         <!-- Navbar -->
@@ -27,7 +31,7 @@
                 <div class="uk-navbar-left">
             
     
-            <img src="https://github.com/davidyi0529/Muse/blob/d-test/images/Muse%20Logo.png?raw=true" width="100" height="100" class="d-inline-block align-top" alt="" loading="lazy">
+            <img src="https://github.com/davidyi0529/Muse/blob/d-test/images/Muse%20Logo.png?raw=true" width="150" height="150" class="d-inline-block align-top" alt="" loading="lazy">
             
                 </div>
                 <div class="uk-navbar-right">
@@ -43,17 +47,35 @@
 
         <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
 
+        <!-- Header -->
         <div class="header">
             <div class="uk-background-transparent uk-padding uk-light uk-position-top-center">
-				<strong><h1>Muse</strong><h6> :a state of deep thought or dreamy abstraction</h6></h1>
+				<h1>Muse</h1> <h6> :a state of deep thought or dreamy abstraction</h6>
             </div>
         </div>
+
+        <!-- Search Row -->
             <div>
-                <div class="uk-background-transparent uk-padding uk-light uk-position-center">
+                <div class="uk-background-transparent uk-light uk-position-top-center">
                     <form>
                         <div class="">
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Search an artist or song!" id="searchInput">
-                            <button class="uk-button uk-button-default" id="searchBtn">Search</button>
+                            <!-- Search Input -->
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="Search for an Artist, Song, or Lyrics!" id="searchInput">
+                            <!-- Dropdown -->
+                            <div class="uk-inline">
+                                <button class="uk-button uk-button-default" type="button"><i class="fas fa-chevron-circle-down"></i></button>
+                                <div uk-dropdown="pos: bottom-justify">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li><a href="#">Artist</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="#">Song</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="#">Lyric</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Search Button -->
+                            <button class="uk-button uk-button-default" id="searchBtn"><i class="fas fa-search"></i></button>
                         </div>
                         
                     </form>
@@ -62,13 +84,204 @@
             
         </div>
 
-        <div class="uk-container uk-container-small uk-position-bottom-center">
+        <!-- Song Results -->
+        <div class="uk-container results uk-position-bottom-center">
+			<h4 class="uk-heading-line uk-text-bold"><span>Search Results</span></h4>
+			<div data-uk-slider="velocity: 5" class="uk-slider">
+				<div class="uk-position-relative">
+					<div class="uk-slider-container">
+						<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small news-slide" style="transform: translate3d(0px, 0px, 0px);">
+							<li tabindex="-1" class="uk-active">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-small uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=1" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics #1</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li tabindex="-1" class="uk-active">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=2" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <li tabindex="-1" class="">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=3" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li tabindex="-1">
+								<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+									<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid="">
+										<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1 uk-first-column">
+											<img src="https://picsum.photos/500/500/?random=4" alt="">
+										</div>
+										<div class="uk-width-2-3@s uk-width-3-5@m">
+											<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Artist name</span>
+											<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+											<a class="uk-link-reset" href="#">Song Title</a>
+											</h3>
+											<span class="uk-article-meta"></span>
+											<p class="uk-margin-small">Bio Info/Lyrics</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="uk-hidden@l uk-light">
+						<a class="uk-position-center-left uk-position-small uk-icon uk-slidenav-previous uk-slidenav" href="#" data-uk-slidenav-previous="" data-uk-slider-item="previous"><svg width="14px" height="24px" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" data-svg="slidenav-previous"><polyline fill="none" stroke="#000" stroke-width="1.4" points="12.775,1 1.225,12 12.775,23 "></polyline></svg></a>
+						<a class="uk-position-center-right uk-position-small uk-icon uk-slidenav-next uk-slidenav" href="#" data-uk-slidenav-next="" data-uk-slider-item="next"><svg width="14px" height="24px" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" data-svg="slidenav-next"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></a>
+					</div>
+					<div class="uk-visible@l">
+						<a class="uk-position-center-left-out uk-position-small uk-icon uk-slidenav-previous uk-slidenav" href="#" data-uk-slidenav-previous="" data-uk-slider-item="previous"><svg width="14px" height="24px" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" data-svg="slidenav-previous"><polyline fill="none" stroke="#000" stroke-width="1.4" points="12.775,1 1.225,12 12.775,23 "></polyline></svg></a>
+						<a class="uk-position-center-right-out uk-position-small uk-icon uk-slidenav-next uk-slidenav" href="#" data-uk-slidenav-next="" data-uk-slider-item="next"><svg width="14px" height="24px" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" data-svg="slidenav-next"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!-- <div class="uk-container uk-container-small uk-position-bottom-center">
             <div class="uk-grid-collapse uk-child-width-expand@s uk-text-left " uk-grid>
                 <ul class="uk-list uk-list-striped" id="list">
 
                 </ul>
             </div>
-        </div>
+        </div> -->
 
     </div>     
             <!-- JS FILES -->
