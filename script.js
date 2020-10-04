@@ -1,12 +1,14 @@
 $(document).ready(function(){
 
+    //boolians for search options
     var searchArtist = false;
     var searchSong = false;
     var searchLyric = false;
 
     //search by artist
     $("#artist-search").on("click", function(event){
-        alert("works");
+        //test alert to see if this search works
+        alert("searching by artist...");
         $("#searchInput").attr("placeholder", "Search an artist!");
         searchArtist = true;
         searchSong = false;
@@ -15,7 +17,8 @@ $(document).ready(function(){
 
     //search by song
     $("#song-search").on("click", function(event){
-        alert("works2");
+        //test alert to see if this search works
+        alert("searching by song...");
         $("#searchInput").attr("placeholder", "Search a song!");
         searchArtist = false;
         searchSong = true;
@@ -24,7 +27,8 @@ $(document).ready(function(){
 
     //search by lyric
     $("#lyric-search").on("click", function(event){
-        alert("works3");
+        //test alert to see if this search works
+        alert("searching by lyric...");
         $("#searchInput").attr("placeholder", "Search a lyric!");
         searchArtist = false;
         searchSong = false;
@@ -33,6 +37,7 @@ $(document).ready(function(){
 
     $("#searchBtn").on("click", function(e){
         e.preventDefault();
+        //test console.log to check if click works
         console.log("click")
 
         //Genius API
@@ -40,6 +45,7 @@ $(document).ready(function(){
         var keyWord = $("#searchInput").val();
         var queryURL = "https://api.genius.com/search?q="+keyWord+"&per_page=25&access_token="+APIKey;
         
+        //search by artist 
         if(searchArtist == true){
             alert("searchArtist = true");
             $.ajax({
@@ -47,6 +53,7 @@ $(document).ready(function(){
                 method: "GET"
             }).then(function(response) {
                 console.log(response);
+                //button for artist[0]
                 var artistName = response.response.hits[0].result.primary_artist.name;
                 var artistTitle = $("<button>");
                 artistTitle.attr("id", response.response.hits[0].result.primary_artist.name);
@@ -55,7 +62,11 @@ $(document).ready(function(){
                 var artistList = $("<li>");
                 artistList.append(artistTitle);
                 $("#list").append(artistList);
+
+                //response.hits array length
                 var hitsLength = response.response.hits.length;
+
+                //checks for different artists (if there are different artists with similar name)
                 for(var i = 1; i < hitsLength; i++){
                     if(artistName != response.response.hits[i].result.primary_artist.name){
                         var artistTitle = $("<button>");
@@ -70,6 +81,7 @@ $(document).ready(function(){
 
             });
         }
+        //search by song
         else if(searchSong == true){
             alert("searchSong = true");
             $.ajax({
@@ -94,12 +106,13 @@ $(document).ready(function(){
                         //$("#title").text($(this).attr("id"))
                     //})
                 }
-             
             });
         }
+        //search by lyric
         else if(searchLyric == true){
             alert("searchLyric = true");
         }
+        //error if no search option picked
         else 
             alert("Error: pick a search option in dropdown.");
 
