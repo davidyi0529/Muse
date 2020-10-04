@@ -73,6 +73,8 @@ $(document).ready(function(){
         else if(searchLyric == true){
             alert("searchLyric = true");
         }
+        else 
+            alert("Error: pick a search option in dropdown.");
 
 
         //===============================================================================
