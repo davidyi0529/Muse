@@ -60,17 +60,17 @@
                     <form>
                         <div class="">
                             <!-- Search Input -->
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Search for an Artist, Song, or Lyrics!" id="searchInput">
+                            <input id="searchInput" class="uk-input uk-form-width-large" type="text" placeholder="Search for an Artist, Song, or Lyrics!">
                             <!-- Dropdown -->
                             <div class="uk-inline">
                                 <button class="uk-button uk-button-default" type="button"><i class="fas fa-chevron-circle-down"></i></button>
                                 <div uk-dropdown="pos: bottom-justify">
                                     <ul class="uk-nav uk-dropdown-nav">
-                                        <li><a href="#">Artist</a></li>
+                                        <li id="artist-search"><a href="#">Artist</a></li>
                                         <li class="uk-nav-divider"></li>
-                                        <li><a href="#">Song</a></li>
+                                        <li id="song-search"><a href="#">Song</a></li>
                                         <li class="uk-nav-divider"></li>
-                                        <li><a href="#">Lyric</a></li>
+                                        <li id="lyric-search"><a href="#">Lyric</a></li>
                                     </ul>
                                 </div>
                             </div>
