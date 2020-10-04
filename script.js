@@ -10,27 +10,27 @@ $(document).ready(function(){
       var queryURL = "https://api.genius.com/search?q="+keyWord+"&per_page=25&access_token="+APIKey;
 
       $.ajax({
-          url: queryURL,
-          method: "GET"
+        url: queryURL,
+        method: "GET"
       }).then(function(response) {
-          console.log(response);
-          var hitsLength = response.response.hits.length;
-          console.log(hitsLength);
-          for(var i = 0; i < hitsLength; i++){
-              var hitsTitle = $("<button>");
-              hitsTitle.attr("id", response.response.hits[i].result.title)
-              hitsTitle.attr("uk-toggle","target: #my-id")
-              var listItem = $("<li>");
-              hitsTitle.text(response.response.hits[i].result.full_title);
-              listItem.append(hitsTitle)
-              $("#list").append(listItem);
+        console.log(response);
+        var hitsLength = response.response.hits.length;
+        console.log(hitsLength);
+        for(var i = 0; i < hitsLength; i++){
+            var hitsTitle = $("<button>");
+            hitsTitle.attr("id", response.response.hits[i].result.title)
+            hitsTitle.attr("uk-toggle","target: #my-id")
+            var listItem = $("<li>");
+            hitsTitle.text(response.response.hits[i].result.full_title);
+            listItem.append(hitsTitle)
+            $("#list").append(listItem);
 
-          $("button").on("click", function(e){
-              e.preventDefault()
-              console.log($(this).attr("id"))
-              $("#title").text($(this).attr("id"))
-          })
-       }
+            //$("button").on("click", function(e){
+                //e.preventDefault()
+                //console.log($(this).attr("id"))
+                //$("#title").text($(this).attr("id"))
+            //})
+        }
        
          
       });
