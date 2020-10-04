@@ -7,6 +7,7 @@ $(document).ready(function(){
     //search by artist
     $("#artist-search").on("click", function(event){
         alert("works");
+        $("#searchInput").attr("placeholder", "Search an artist!");
         searchArtist = true;
         searchSong = false;
         searchLyric = false;
@@ -24,6 +25,7 @@ $(document).ready(function(){
     //search by lyric
     $("#lyric-search").on("click", function(event){
         alert("works3");
+        $("#searchInput").attr("placeholder", "Search a lyric!");
         searchArtist = false;
         searchSong = false;
         searchLyric = true;
