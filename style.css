@@ -35,7 +35,8 @@ body.background {
 }
 
 .text {
-    position: absolute;
+	position: absolute;
+	
 }
 
 h1, h4 {
@@ -52,12 +53,12 @@ h1, h4 {
 .ml2 {
 	font-weight: 900;
 	font-size: 3.5em;
-  }
+}
   
 .ml2 .letter {
 	display: inline-block;
 	line-height: 1em;
-  }
+}
 
 .header h4 {
 	font-size: 20px;
@@ -139,4 +140,14 @@ p {
 
 .uk-open>.uk-modal-dialog {
 	background-color: rgb(102, 100, 241);
+}
+
+.about {
+	margin-top: 200px;
+	margin-left: 500px;
+}
+
+.contact {
+	margin-top: 200px;
+
 }
