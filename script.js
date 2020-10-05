@@ -59,7 +59,7 @@ $(document).ready(function(){
                 var artistName = response.response.hits[0].result.primary_artist.name;
                 var artistTitle = $("<button>");
                 artistTitle.attr("id", response.response.hits[0].result.primary_artist.name);
-                artistTitle.attr("uk-toggle","target: #my-id");
+                //artistTitle.attr("uk-toggle","target: #my-id");
                 artistTitle.text(response.response.hits[0].result.primary_artist.name);
                 var artistList = $("<li>");
                 artistList.append(artistTitle);
