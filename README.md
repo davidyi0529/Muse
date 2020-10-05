@@ -11,7 +11,12 @@
 
 <br />
 
-WALL OF TEXT
+Ever want to catch up with your favorite artist, their latest album, singles, music videos; fortunately, you can. 
+
+Our app is designed to provide the user with all the latest work for your favorite artist — with a simple search of your favorite artist’s 
+
+name, song, or lyrics, you will receive info on their latest work via Genius.
+
 
 ### Screenshot of the launch page:
 
@@ -87,7 +92,7 @@ The following were used for this project.
 
 - `APIs`
     - <a href="https://genius.com/developers" target="_blank">`Genius API`</a> 
-    - <a href="" target="_blank">`???`</a> 
+    - <a href="https://developer.musixmatch.com/" target="_blank">`Musixmatch API`</a> 
 
 <br />
 <br />
@@ -112,6 +117,8 @@ The following were used for this project.
 ><a href="https://animejs.com/" target="_blank">`Animejs`</a> 
 
 ><a href="https://genius.com/developers" target="_blank">`Genius API`</a>
+
+><a href="https://developer.musixmatch.com/" target="_blank">`Musixmatch API`</a>
 
 <br />
 <br />
