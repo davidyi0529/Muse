@@ -97,7 +97,7 @@ $(document).ready(function(){
                 for(var i = 0; i < hitsLength; i++){
                     var hitsTitle = $("<button>");
                     hitsTitle.attr("id", response.response.hits[i].result.title);
-                    //hitsTitle.attr("uk-toggle","target: #"+response.response.hits[i].result.title);
+                    //hitsTitle.attr("uk-toggle","target: #myId");
 
                     var listItem = $("<li>");
                     hitsTitle.text(response.response.hits[i].result.full_title);
@@ -106,7 +106,7 @@ $(document).ready(function(){
 
                     //modal
                     var hitsModal = $("<div uk-modal>");
-                    hitsModal.attr("id", response.response.hits[i].result.title);
+                    hitsModal.attr("id", "modal"+i);
                     var hitsModalBody = $("<div class='uk-modal-dialog uk-modal-body'></div>");
                     hitsModal.append(hitsModalBody);
                     var hitsModalTitle = $("<div class='uk-modal-title'></div>");
@@ -114,16 +114,8 @@ $(document).ready(function(){
                     hitsModalBody.append(hitsModalTitle);
 
                     $("#main").append(hitsModal);
+                    hitsTitle.attr("uk-toggle","target: #modal"+i);
                 }
-                $("#"+response.response.hits[0].result.title).on("click", function(){
-                    alert("yo");
-                });
-                $("#"+response.response.hits[1].result.title).on("click", function(){
-                    alert("yo1");
-                });
-                $("#"+response.response.hits[2].result.title).on("click", function(){
-                    alert("yo2");
-                });
             });
         }
         //search by lyric
