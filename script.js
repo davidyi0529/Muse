@@ -87,6 +87,7 @@ $(document).ready(function(){
             //test alert
             //alert("searching by song...");
             $("#list").empty();
+            $("#modals").empty();
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -113,7 +114,7 @@ $(document).ready(function(){
                     hitsModalTitle.text(response.response.hits[i].result.full_title);
                     hitsModalBody.append(hitsModalTitle);
 
-                    $("#main").append(hitsModal);
+                    $("#modals").append(hitsModal);
                     hitsTitle.attr("uk-toggle","target: #modal"+i);
                 }
             });
