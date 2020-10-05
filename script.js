@@ -8,7 +8,7 @@ $(document).ready(function(){
     //search by artist
     $("#artist-search").on("click", function(event){
         //test alert to see if this search works
-        alert("Search an artist");
+        // alert("Search an artist");
         $("#searchInput").attr("placeholder", "Search an artist!");
         searchArtist = true;
         searchSong = false;
@@ -18,7 +18,7 @@ $(document).ready(function(){
     //search by song
     $("#song-search").on("click", function(event){
         //test alert to see if this search works
-        alert("search a song");
+        // alert("search a song");
         $("#searchInput").attr("placeholder", "Search a song!");
         searchArtist = false;
         searchSong = true;
@@ -28,7 +28,7 @@ $(document).ready(function(){
     //search by lyric
     $("#lyric-search").on("click", function(event){
         //test alert to see if this search works
-        alert("search a lyric");
+        // alert("search a lyric");
         $("#searchInput").attr("placeholder", "Search a lyric!");
         searchArtist = false;
         searchSong = false;
@@ -48,7 +48,8 @@ $(document).ready(function(){
         //search by artist 
         if(searchArtist == true){
             //test alert 
-            alert("searching by artist...");
+            // alert("searching by artist...");
+            $("#list").empty();
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -85,7 +86,8 @@ $(document).ready(function(){
         //search by song
         else if(searchSong == true){
             //test alert
-            alert("searching by song...");
+            // alert("searching by song...");
+            $("#list").empty();
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -101,6 +103,18 @@ $(document).ready(function(){
                     hitsTitle.text(response.response.hits[i].result.full_title);
                     listItem.append(hitsTitle)
                     $("#list").append(listItem);
+
+                    //modal
+                    var hitsModal = $("<div uk-modal>");
+                    hitsModal.attr("id", "modal"+i);
+                    var hitsModalBody = $("<div class='uk-modal-dialog uk-modal-body'></div>");
+                    hitsModal.append(hitsModalBody);
+                    var hitsModalTitle = $("<div class='uk-modal-title'></div>");
+                    hitsModalTitle.text(response.response.hits[i].result.full_title);
+                    hitsModalBody.append(hitsModalTitle);
+
+                    $("#main").append(hitsModal);
+                    hitsTitle.attr("uk-toggle","target: #modal"+i);
     
                     //$("button").on("click", function(e){
                         //e.preventDefault()
@@ -113,7 +127,8 @@ $(document).ready(function(){
         //search by lyric
         else if(searchLyric == true){
             //test alert
-            alert("searching by lyric...");
+            // alert("searching by lyric...");
+            $("#list").empty();
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -135,8 +150,7 @@ $(document).ready(function(){
         //error if no search option picked
         else 
             alert("Error: pick a search option in dropdown.");
-
-
+      
         //===============================================================================
         //Rapid Genius API
         //var settings = {
@@ -170,4 +184,25 @@ $(document).ready(function(){
         //})
     });
 
+    // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+  
 });
