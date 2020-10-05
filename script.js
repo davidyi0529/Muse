@@ -50,6 +50,10 @@ $(document).ready(function(){
             //test alert 
             //alert("searching by artist...");
             $("#list").empty();
+            $("#modals").empty();
+            for(var i = 0; i< 20; i++){
+                $("#modal"+i).remove();
+            }
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -59,11 +63,21 @@ $(document).ready(function(){
                 var artistName = response.response.hits[0].result.primary_artist.name;
                 var artistTitle = $("<button>");
                 artistTitle.attr("id", response.response.hits[0].result.primary_artist.name);
-                //artistTitle.attr("uk-toggle","target: #my-id");
                 artistTitle.text(response.response.hits[0].result.primary_artist.name);
                 var artistList = $("<li>");
                 artistList.append(artistTitle);
                 $("#list").append(artistList);
+
+                //modal
+                var artistModal = $("<div uk-modal>");
+                artistModal.attr("id", "modal"+0);
+                var artistModalBody = $("<div class='uk-modal-dialog uk-modal-body'></div>");
+                artistModal.append(artistModalBody);
+                var artistModalTitle = $("<div class='uk-modal-title'></div>");
+                artistModalTitle.text(response.response.hits[0].result.primary_artist.name);
+                artistModalBody.append(artistModalTitle);
+                $("#modals").append(artistModal);
+                artistTitle.attr("uk-toggle","target: #modal"+0);
 
                 //response.hits array length
                 var hitsLength = response.response.hits.length;
@@ -73,11 +87,21 @@ $(document).ready(function(){
                     if(artistName != response.response.hits[i].result.primary_artist.name){
                         var artistTitle = $("<button>");
                         artistTitle.attr("id", response.response.hits[i].result.primary_artist.name);
-                        artistTitle.attr("uk-toggle","target: #my-id");
                         artistTitle.text(response.response.hits[i].result.primary_artist.name);
                         var artistList = $("<li>");
                         artistList.append(artistTitle);
                         $("#list").append(artistList);
+
+                        //modal
+                        var artistModal = $("<div uk-modal>");
+                        artistModal.attr("id", "modal"+i);
+                        var artistModalBody = $("<div class='uk-modal-dialog uk-modal-body'></div>");
+                        artistModal.append(artistModalBody);
+                        var artistModalTitle = $("<div class='uk-modal-title'></div>");
+                        artistModalTitle.text(response.response.hits[i].result.primary_artist.name);
+                        artistModalBody.append(artistModalTitle);
+                        $("#modals").append(artistModal);
+                        artistTitle.attr("uk-toggle","target: #modal"+i);
                     }
                 }
             });
@@ -88,18 +112,20 @@ $(document).ready(function(){
             //alert("searching by song...");
             $("#list").empty();
             $("#modals").empty();
+            for(var i = 0; i< 20; i++){
+                $("#modal"+i).remove();
+            }
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(response);
+                //console.log(response);
                 var hitsLength = response.response.hits.length;
                 console.log(hitsLength);
                 for(var i = 0; i < hitsLength; i++){
+                    //list search results
                     var hitsTitle = $("<button>");
                     hitsTitle.attr("id", response.response.hits[i].result.title);
-                    //hitsTitle.attr("uk-toggle","target: #myId");
-
                     var listItem = $("<li>");
                     hitsTitle.text(response.response.hits[i].result.full_title);
                     listItem.append(hitsTitle);
@@ -124,24 +150,37 @@ $(document).ready(function(){
             //test alert
             //alert("searching by lyric...");
             $("#list").empty();
+            $("#modals").empty();
+            for(var i = 0; i< 20; i++){
+                $("#modal"+i).remove();
+            }
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(response);
+                //console.log(response);
                 var hitsLength = response.response.hits.length;
                 console.log(hitsLength);
                 for(var i = 0; i < hitsLength; i++){
+                    //list search results
                     var lyricTitle = $("<button>");
                     lyricTitle.attr("id", response.response.hits[i].result.title);
-                    lyricTitle.attr("uk-toggle","target: #my-id");
-                    var listItem = $("<li>");
+                    var listLyric = $("<li>");
                     lyricTitle.text(response.response.hits[i].result.full_title);
-                    listItem.append(lyricTitle);
-                    $("#list").append(listItem);
-                    var listTitle = $("<p>");
-                    listTitle.text(response.response.hits[i].result.full_title);
-                    $("#title").append(listTitle);
+                    listLyric.append(lyricTitle);
+                    $("#list").append(listLyric);
+
+                    //modal
+                    var lyricModal = $("<div uk-modal>");
+                    lyricModal.attr("id", "modal"+i);
+                    var lyricModalBody = $("<div class='uk-modal-dialog uk-modal-body'></div>");
+                    lyricModal.append(lyricModalBody);
+                    var lyricModalTitle = $("<div class='uk-modal-title'></div>");
+                    lyricModalTitle.text(response.response.hits[i].result.full_title);
+                    lyricModalBody.append(lyricModalTitle);
+
+                    $("#modals").append(lyricModal);
+                    lyricTitle.attr("uk-toggle","target: #modal"+i);
                 }
             });
         }
