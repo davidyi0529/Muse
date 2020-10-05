@@ -8,7 +8,6 @@ $(document).ready(function(){
     //search by artist
     $("#artist-search").on("click", function(event){
         //test alert to see if this search works
-        alert("Search an artist");
         $("#searchInput").attr("placeholder", "Search an artist!");
         searchArtist = true;
         searchSong = false;
@@ -18,7 +17,6 @@ $(document).ready(function(){
     //search by song
     $("#song-search").on("click", function(event){
         //test alert to see if this search works
-        alert("search a song");
         $("#searchInput").attr("placeholder", "Search a song!");
         searchArtist = false;
         searchSong = true;
@@ -28,7 +26,6 @@ $(document).ready(function(){
     //search by lyric
     $("#lyric-search").on("click", function(event){
         //test alert to see if this search works
-        alert("search a lyric");
         $("#searchInput").attr("placeholder", "Search a lyric!");
         searchArtist = false;
         searchSong = false;
@@ -48,39 +45,47 @@ $(document).ready(function(){
         //search by artist 
         if(searchArtist == true){
             //test alert 
-            alert("searching by artist...");
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function(response) {
                 console.log(response);
-                //button for artist[0]
-                var artistName = response.response.hits[0].result.primary_artist.name;
-                var artistTitle = $("<button>");
-                artistTitle.attr("id", response.response.hits[0].result.primary_artist.name);
-                artistTitle.attr("uk-toggle","target: #my-id");
-                artistTitle.text(response.response.hits[0].result.primary_artist.name);
-                var artistList = $("<li>");
-                artistList.append(artistTitle);
-                $("#list").append(artistList);
-
-                //response.hits array length
                 var hitsLength = response.response.hits.length;
+                console.log(hitsLength);
+                //button for artist[0]
+                
+                    var artistName = response.response.hits[0].result.primary_artist.name;
+                    var artistTitle = $("<button>");
+                    artistTitle.attr("id", response.response.hits[0].result.primary_artist.name);
+                    artistTitle.attr("uk-toggle","target: #my-id");
+                    artistTitle.text(response.response.hits[0].result.primary_artist.name);
+                    var artistList = $("<li>");
+                    artistList.append(artistTitle);
+                    $("#list").append(artistList);
+                    $("button").on("click", function(e){
+                        e.preventDefault()
+                        console.log($(this).attr("id"))
+                        $("#title").text($(this).attr("id"))
+                    })
+                    //response.hits array length
+                    var hitsLength = response.response.hits.length;
 
-                //checks for different artists (if there are different artists with similar name)
-                for(var i = 1; i < hitsLength; i++){
-                    if(artistName != response.response.hits[i].result.primary_artist.name){
-                        var artistTitle = $("<button>");
-                        artistTitle.attr("id", response.response.hits[i].result.primary_artist.name);
-                        artistTitle.attr("uk-toggle","target: #my-id");
-                        artistTitle.text(response.response.hits[i].result.primary_artist.name);
-                        var artistList = $("<li>");
-                        artistList.append(artistTitle);
-                        $("#list").append(artistList);
+                    //checks for different artists (if there are different artists with similar name)
+                    for(var i = 1; i < hitsLength; i++){
+                        if(artistName != response.response.hits[i].result.primary_artist.name){
+                            var artistTitle = $("<button>");
+                            artistTitle.attr("id", response.response.hits[i].result.primary_artist.name);
+                            artistTitle.attr("uk-toggle","target: #my-id");
+                            artistTitle.text(response.response.hits[i].result.primary_artist.name);
+                            var artistList = $("<li>");
+                            artistList.append(artistTitle);
+                            $("#list").append(artistList);
+                        }
                     }
-                }
-
+        
             });
+
+            
         }
         //search by song
         else if(searchSong == true){
@@ -101,12 +106,6 @@ $(document).ready(function(){
                     hitsTitle.text(response.response.hits[i].result.full_title);
                     listItem.append(hitsTitle)
                     $("#list").append(listItem);
-    
-                    //$("button").on("click", function(e){
-                        //e.preventDefault()
-                        //console.log($(this).attr("id"))
-                        //$("#title").text($(this).attr("id"))
-                    //})
                 }
             });
         }
@@ -159,15 +158,21 @@ $(document).ready(function(){
 
         //===================================================================================
         // Musix API
-        //var search = keyWord.split(" ").join("%20")
-        //var qURL = "https://api.musixmatch.com/ws/1.1/track.search?apikey=6ce8d86aa1e7760b4991402c42829c5d&q="+search
+        jQuery.ajaxPrefilter(function(options) {
+            if (options.crossDomain && jQuery.support.cors) {
+                options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+            }
+        });
+        
+        var search = keyWord.split(" ").join("%20")
+        var qURL = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=15953433apikey=6ce8d86aa1e7760b4991402c42829c5d"
 
-        //$.ajax({
-            //url: qURL,
-            //get: "GET"
-        //}).then(function(result){
-            //console.log(result)
-        //})
+        $.ajax({
+            url: qURL,
+            get: "GET"
+        }).then(function(result){
+            console.log(result)
+        })
     });
 
 });
