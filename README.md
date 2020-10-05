@@ -28,10 +28,6 @@ name, song, or lyrics, you will receive info on their latest work via Genius.
 
 <img src="https://github.com/davidyi0529/Muse/blob/master/images/results.png?raw=true" width="1275" height="600">
 
-### Screenshot of modals:
-
-<img src="???" width="1275" height="600">
-
 <br />
 <br />
 
