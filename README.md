@@ -6,8 +6,11 @@
 
 <br />
 
+### Link to Presentation Slideshow
+- <a href="https://docs.google.com/presentation/d/1uaqa0vYaErmXWmeNoULV2u4jIE74n1bRc0C7DPk_Rjg/edit#slide=id.p" Target="_blank">`Presentation Slideshow`</a> 
+
 ### Link to Deployed Application
-- https://davidyi0529.github.io/Muse/
+- <a href="https://davidyi0529.github.io/Muse/" Target="_blank">`Muse Project`</a> 
 
 <br />
 
