@@ -150,8 +150,7 @@ $(document).ready(function(){
         //error if no search option picked
         else 
             alert("Error: pick a search option in dropdown.");
-
-
+      
         //===============================================================================
         //Rapid Genius API
         //var settings = {
@@ -205,5 +204,5 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 1000
   });
-
+  
 });
