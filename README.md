@@ -17,14 +17,16 @@ Our app is designed to provide the user with all the latest work for your favori
 
 name, song, or lyrics, you will receive info on their latest work via Genius.
 
+<br />
+<br />
 
 ### Screenshot of the launch page:
 
-<img src="???" width="1275" height="600">
+<img src="https://github.com/davidyi0529/Muse/blob/master/images/launch-page.png?raw=true" width="1275" height="600">
 
 ### Screenshot of search results:
 
-<img src="???" width="1275" height="600">
+<img src="https://github.com/davidyi0529/Muse/blob/master/images/results.png?raw=true" width="1275" height="600">
 
 ### Screenshot of modals:
 
