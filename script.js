@@ -78,6 +78,17 @@ $(document).ready(function(){
                 artistModalBody.append(artistModalTitle);
                 $("#modals").append(artistModal);
                 artistTitle.attr("uk-toggle","target: #modal"+0);
+                var artistImg = $("<img>");
+                artistImg.attr("src", response.response.hits[0].result.primary_artist.image_url);
+                artistModalTitle.append(artistImg);
+
+                var artistModalButtons = $("<p class='uk-text-right'></p>");
+                var artistModalClose = $("<button class='uk-button uk-modal-close' type='button'>Close</button>");
+                artistModalButtons.append(artistModalClose);
+                artistModalTitle.append(artistModalButtons);
+                var artistModalInfo = $("<button id ='play' class='uk-button' type='button'>Info</button>");
+                artistModalButtons.append(artistModalInfo);
+
 
                 //response.hits array length
                 var hitsLength = response.response.hits.length;
@@ -102,6 +113,15 @@ $(document).ready(function(){
                         artistModalBody.append(artistModalTitle);
                         $("#modals").append(artistModal);
                         artistTitle.attr("uk-toggle","target: #modal"+i);
+                        var artistImg = $("<img>");
+                        artistImg.attr("src", response.response.hits[i].result.primary_artist.image_url);
+                        artistModalTitle.append(artistImg);
+                        var artistModalButtons = $("<p class='uk-text-right'></p>");
+                        var artistModalClose = $("<button class='uk-button uk-modal-close' type='button'>Close</button>");
+                        artistModalButtons.append(artistModalClose);
+                        artistModalTitle.append(artistModalButtons);
+                        var artistModalInfo = $("<button id ='play' class='uk-button' type='button'>Info</button>");
+                        artistModalButtons.append(artistModalInfo);
                     }
                 }
             });
@@ -141,14 +161,12 @@ $(document).ready(function(){
                     var hitsImg = $("<img>");
                     hitsImg.attr("src", response.response.hits[i].result.song_art_image_thumbnail_url);
                     hitsModalTitle.append(hitsImg);
-                    var hitsLyric = $("<a>");
                     var hitsModalButtons = $("<p class='uk-text-right'></p>");
                     var hitsModalClose = $("<button class='uk-button uk-modal-close' type='button'>Close</button>");
                     hitsModalButtons.append(hitsModalClose);
                     hitsModalTitle.append(hitsModalButtons);
                     var hitsModalPlay = $("<button id ='play' class='uk-button' type='button'>Play</button>");
                     hitsModalButtons.append(hitsModalPlay);
-
                     $("#modals").append(hitsModal);
                     hitsTitle.attr("uk-toggle","target: #modal"+i);
                 }
@@ -190,7 +208,12 @@ $(document).ready(function(){
                     var lyricImg = $("<img>");
                     lyricImg.attr("src", response.response.hits[i].result.song_art_image_thumbnail_url);
                     lyricModalTitle.append(lyricImg);
-
+                    var lyricModalButtons = $("<p class='uk-text-right'></p>");
+                    var lyricModalClose = $("<button class='uk-button uk-modal-close' type='button'>Close</button>");
+                    lyricModalButtons.append(lyricModalClose);
+                    lyricModalTitle.append(lyricModalButtons);
+                    var lyricModalPlay = $("<button id ='play' class='uk-button' type='button'>Play</button>");
+                    lyricModalButtons.append(lyricModalPlay);
 
                     $("#modals").append(lyricModal);
                     lyricTitle.attr("uk-toggle","target: #modal"+i);
