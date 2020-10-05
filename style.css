@@ -38,18 +38,28 @@ body.background {
     position: absolute;
 }
 
-h1, h6 {
+h1, h4 {
 	display: inline;
 }
 
 .header h1 {
-	font-size: 80px;
+	font-size: 70px;
 	font-family: 'Francois One', sans-serif;
-	color: rgb(53, 53, 201);
+	color: rgb(165, 165, 218);
 	font-weight: bold;
 }
 
-.header h6 {
+.ml2 {
+	font-weight: 900;
+	font-size: 3.5em;
+  }
+  
+.ml2 .letter {
+	display: inline-block;
+	line-height: 1em;
+  }
+
+.header h4 {
 	font-size: 20px;
 	font-style: italic;
 	padding-left: 10px;
@@ -67,7 +77,7 @@ h1, h6 {
 } */
 
 form {
-	margin-top: 300px;
+	margin-bottom: 200px;
 	border-style: solid;
 	border-color: rgb(125, 92, 161);
 	font: white;
@@ -86,10 +96,10 @@ form {
 
 #list {
 	columns: 4;
-	margin-bottom: 50px;
+	margin-top: 220px;
 	border-style: initial;
 	border-color: rgb(125, 92, 161);
-	padding: 10px;
+	padding: 30px;
 	background: transparent;
 	color: white;
 }
