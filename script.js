@@ -28,7 +28,7 @@ $(document).ready(function(){
     //search by lyric
     $("#lyric-search").on("click", function(event){
         //test alert to see if this search works
-        //alert("search a lyric");
+        // alert("search a lyric");
         $("#searchInput").attr("placeholder", "Search a lyric!");
         searchArtist = false;
         searchSong = false;
@@ -54,6 +54,7 @@ $(document).ready(function(){
             for(var i = 0; i< 20; i++){
                 $("#modal"+i).remove();
             }
+          
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -135,6 +136,7 @@ $(document).ready(function(){
             for(var i = 0; i< 20; i++){
                 $("#modal"+i).remove();
             }
+
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -158,6 +160,7 @@ $(document).ready(function(){
                     var hitsModalTitle = $("<div class='uk-modal-title'></div>");
                     hitsModalTitle.text(response.response.hits[i].result.full_title);
                     hitsModalBody.append(hitsModalTitle);
+
                     var hitsImg = $("<img>");
                     hitsImg.attr("src", response.response.hits[i].result.song_art_image_thumbnail_url);
                     hitsModalTitle.append(hitsImg);
@@ -181,6 +184,7 @@ $(document).ready(function(){
             for(var i = 0; i< 20; i++){
                 $("#modal"+i).remove();
             }
+
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -263,8 +267,7 @@ $(document).ready(function(){
         //error if no search option picked
         else 
             alert("Error: pick a search option in dropdown.");
-
-
+      
         //===============================================================================
         //Rapid Genius API
         // var settings = {
@@ -298,4 +301,25 @@ $(document).ready(function(){
         //})
     });
 
+    // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+  
 });

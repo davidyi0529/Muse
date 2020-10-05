@@ -11,18 +11,21 @@
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
         <script src="https://kit.fontawesome.com/b386b5e099.js" crossorigin="anonymous"></script>
 
-        <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
 
-        <!--  Materialize CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
-	    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     </head>
     <!-- Background Image -->
     <body class="background uk-cover-container uk-height-viewport uk-overflow-hidden uk-light" data-uk-height-viewport></body>
-        
+        <!-- overlay -->
+		<div class="uk-position-cover uk-overlay-primary"></div>
+		<!-- /overlay -->
         <div class="uk-position-bottom-center uk-position-small uk-visible@m uk-position-z-index">
-            <span class="uk-text-small uk-text-muted">Copyright © All rights reserved.</span>
+            <span class="uk-text-small uk-text-muted">Copyright © 2020 Muse Project - All rights reserved.</span>
         </div>
          
         <!-- Navbar -->
@@ -33,9 +36,9 @@
                 </div>
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav">
-                        <li class="uk-active"><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li class="uk-active"><a href="file:///C:/Users/david/My-Projects/muse/index.html">Home</a></li>
+                        <li><a href="file:///C:/Users/david/My-Projects/muse/about.html">About</a></li>
+                        <li><a href="file:///C:/Users/david/My-Projects/muse/contact.html">Contact</a></li>
                     </ul>            
                 </div>
             </nav>
@@ -46,28 +49,29 @@
         <!-- Header -->
         <div class="header">
             <div class="uk-background-transparent uk-padding uk-light uk-position-top-center">
-				<h1>Muse</h1> <h6> :a state of deep thought or dreamy abstraction</h6>
+				<h1 class="ml2">Muse</h1><h4>:a state of deep thought or dreamy abstraction</h4>
             </div>
         </div>
 
         <!-- Search Row -->
-        <div>
-            <div class="uk-background-transparent uk-light uk-position-top-center">
-                <form>
-                    <div class="">
-                        <!-- Search Input -->
-                        <input id="searchInput" class="uk-input uk-form-width-large" type="text" placeholder="Search for an Artist, Song, or Lyric!">
-                        <!-- Dropdown -->
-                        <div class="uk-inline">
-                            <button class="uk-button uk-button-default" type="button"><i class="fas fa-chevron-circle-down"></i></button>
-                            <div uk-dropdown="pos: bottom-justify">
-                                <ul class="uk-nav uk-dropdown-nav">
-                                    <li id="artist-search"><a href="#">Artist</a></li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li id="song-search"><a href="#">Song</a></li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li id="lyric-search"><a href="#">Lyric</a></li>
-                                </ul>
+            <div>
+                <div class="uk-background-transparent uk-light uk-position-bottom-center">
+                    <form>
+                        <div class="">
+                            <!-- Search Input -->
+                            <input id="searchInput" class="uk-input uk-form-width-large" type="text" placeholder="Search for an Artist, Song, or Lyric!">
+                            <!-- Dropdown -->
+                            <div class="uk-inline">
+                                <button class="uk-button uk-button-default" type="button"><i class="fas fa-chevron-circle-down"></i></button>
+                                <div uk-dropdown="pos: bottom-justify">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li id="artist-search"><a href="#">Artist</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li id="song-search"><a href="#">Song</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li id="lyric-search"><a href="#">Lyric</a></li>
+                                    </ul>
+                              </div>
                             </div>
                         </div>
                         <!-- Search Button -->
@@ -80,20 +84,34 @@
 
 
         <!-- Song Results -->
-        <div id="main" class="uk-container uk-container-small uk-position-bottom-center">
-            <div class="uk-container uk-container-small">
-                <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center " uk-grid>
-                    <ol class="uk-list" id="list"></ol>
-                </div>
-            </div>
-		</div>
-        <!-- modals -->
-        <div id="modals"></div>
-        <!-- JS FILES -->
-        <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="script.js"></script>
+         <div class="uk-container uk-container-small uk-position-top-center">
+                    <div class="uk-container uk-container-small">
+                        <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center " uk-grid>
+                            <ol class="uk-list" id="list"></ol>
+                        </div>
+                    </div>
+				</div>     
+				
+					<!-- Modal -->
+					<div id="my-id" uk-modal>
+						<div class="uk-modal-dialog uk-modal-body">
+							<div class="uk-modal-title" id="title"></div>
+							<p>Info</p>
+							<p class="uk-text-right">
+								<button class="uk-button uk-modal-close" type="button">Close</button>
+								<button class="uk-button" type="button">Play</button>
+							</p>
+						</div>
+					</div>
+  </div>
+
+            <!-- JS FILES -->
+            <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+            <script src="script.js"></script>
+
     
     </body>
 </html>
