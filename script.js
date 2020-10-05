@@ -290,15 +290,26 @@ $(document).ready(function(){
 
         //===================================================================================
         // Musix API
-        //var search = keyWord.split(" ").join("%20")
-        //var qURL = "https://api.musixmatch.com/ws/1.1/track.search?apikey=6ce8d86aa1e7760b4991402c42829c5d&q="+search
+        jQuery.ajaxPrefilter(function(options) {
+            if (options.crossDomain && jQuery.support.cors) {
+                options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+            }
+        });
 
-        //$.ajax({
-            //url: qURL,
-            //get: "GET"
-        //}).then(function(result){
-            //console.log(result)
-        //})
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                "x-rapidapi-key": "7dec1dcce1be7b60d0504e6fc8d0ddac"
+            }
+        }
+        
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
     });
 
     // Wrap every letter in a span
